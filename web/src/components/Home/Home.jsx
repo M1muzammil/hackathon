@@ -24,33 +24,68 @@ const Home = () => {
     }
   }
 
+  // const checkOut = async () => {
+  //   try {
+  //     const response = await axios.put(`${baseUrl}/api/v1/check-out/${state.user.userId}`);
+
+
+
+  //     // sweet alert toast
+  //     const Toast = Swal.mixin({
+  //       toast: true,
+  //       position: "top-end",
+  //       showConfirmButton: false,
+  //       timer: 1200,
+  //       timerProgressBar: true,
+  //       didOpen: (toast) => {
+  //         toast.onmouseenter = Swal.stopTimer;
+  //         toast.onmouseleave = Swal.resumeTimer;
+  //       }
+  //     });
+  //     Toast.fire({
+  //       title: "Check Out Successful"
+  //     });
+
+  //   } catch (error) {
+  //     console.error(error);
+  //     setMessage("Can't check out");
+  //   }
+  // }
+
   const checkOut = async () => {
     try {
       const response = await axios.put(`${baseUrl}/api/v1/check-out/${state.user.userId}`);
-
-
-
-      // sweet alert toast
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1200,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        title: "Check Out Successful"
-      });
-
+  
+      // Reload the page
+      window.location.reload();
+  
+      // Wait for the page to reload before running check-in logic
+      window.onload = () => {
+        // sweet alert toast
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1200,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          title: "Check Out Successful"
+        });
+  
+        // Run check-in logic here
+        // Example: setShowModal(true);
+      };
     } catch (error) {
       console.error(error);
       setMessage("Can't check out");
     }
   }
+  
 
   return (
     <>

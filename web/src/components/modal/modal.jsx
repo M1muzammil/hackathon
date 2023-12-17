@@ -2,6 +2,7 @@ import React, { useRef, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+
 import { CameraFill, ArrowLeft } from 'react-bootstrap-icons';
 import { baseUrl } from "../../core.mjs";
 import { GlobalContext } from "../../context/context";

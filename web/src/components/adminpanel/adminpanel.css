@@ -100,3 +100,15 @@ padding: 1rem;
     padding: 1rem;
     box-shadow: 0 0 10px rgb(92, 135, 89); 
 }
+.information{
+    margin-top: 0.5em;
+    box-shadow: 0 0 10px rgb(92, 135, 89); 
+}
+/* .picture{
+    background-color: aqua;
+    width: 35px;
+} */
+
+.cursor-pointer{
+    font-size: 15px;
+}

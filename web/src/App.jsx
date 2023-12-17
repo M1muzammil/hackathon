@@ -1,26 +1,20 @@
-import Home from "./components/Home/Home";
-import Adminpanel from './components/adminpanel/adminpanel'
 
-import Login from './components/login/login'
-import { useEffect, useContext, useState } from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-  useParams,
-} from "react-router-dom";
-import { GlobalContext } from "./context/context";
 
-import "./App.css";
+
+
+import React, { useEffect, useContext, useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
-
 import { baseUrl } from "./core.mjs";
+import { GlobalContext } from "./context/context";
+import Adminpanel from "./components/adminpanel/adminpanel";
+import Home from "./components/Home/Home";
+import Login from "./components/login/login";
+
 
 const App = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const [notifications, setNotifications] = useState([]);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -30,14 +24,9 @@ const App = () => {
         return config;
       },
       function (error) {
-        
         return Promise.reject(error);
       }
     );
-
-    return () => {
-      // cleanup function
-    };
   }, []);
 
   useEffect(() => {
@@ -59,55 +48,45 @@ const App = () => {
     };
 
     checkLoginStatus();
-
-    return () => {
-      // cleanup function
-    };
   }, []);
-
+  console.log(location.pathname);
   return (
-    <div className="div">
-      {/* <div>{JSON.stringify(state)}</div> */}
-      {/* user routes */}
-      {state.isLogin === true && state.user.isAdmin === false ? (
-        <>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
-          </Routes>
-        </>
-      ) : null}
+    <div >
+       {/* <div>{JSON.stringify(state)}</div> */}
+      {/* <Routes>
+        {state.isLogin === true && state.user && state.user.isAdmin === false && (
+          <Route path="/" element={<Attendence />} />
+        )}
 
-      {state.isLogin === true && state.user.isAdmin === true ? (
-        <>
-          <Routes>
+        {state.isLogin === true && state.user && state.user.isAdmin === true && (
+          <Route path="/" element={<Adminpanel />} />
+        )}
 
-            <Route path="/" element={<Adminpanel/>} />
+        {state.isLogin === false && (
+          <Route path="/" element={<Login />} />
+        )}
 
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
-          </Routes>
-        </>
-      ) : null}
+        {state.isLogin === null && (
+          <Route path="/" element={<Login />} />
+        )}
 
-      {/* unAuth routes */}
+        <Route path="*" element={<Navigate to="/" replace={true} />} />
+      </Routes> */}
+      <Routes>
+  {state.isLogin && state.user && state.user.isAdmin === false && (
+    <Route path="/" element={<Home/>} />
+  )}
 
-      {state.isLogin === false ? (
-        <>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/Admin" element={<Adminpanel/>} />
-           
-            <Route path="*" element={<Navigate to="/login" replace={true} />} />
-          </Routes>
-        </>
-      ) : null}
+  {state.isLogin && state.user && state.user.isAdmin === true && (
+    <Route path="/" element={<Adminpanel />} />
+  )}
 
-      {/* splash screen */}
-      {state.isLogin === null ? (
-        <>
-        <h1>Loading . . .</h1>
-        </>
-      ) : null}
+  {!state.isLogin && <Route path="/" element={<Login />} />}
+
+  {state.isLogin === null && <Route path="/" element={<Login />} />}
+
+  <Route path="*" element={<Navigate to="/" replace={true} />} />
+</Routes>
     </div>
   );
 };

@@ -1,0 +1,102 @@
+.leftsection{
+    display: flex;
+    justify-content:flex-start ;
+    align-items: center;
+    flex-direction:column;
+    width: 30%;
+   
+    height: 100vh;
+    padding-top: 10rem;
+    gap: 2rem;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo{
+    font-size: 5rem;
+}
+.rightsectionn{
+    width: 100%;
+    background-color: rgb(245, 251, 249);
+    display: flex;
+   padding: 1rem; 
+ justify-content: flex-start;
+ height: 100%;
+ flex-direction: column;
+}
+.main{
+    width: 100vw;
+    display: flex;
+   
+}
+
+.attandence, .student{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem ;
+   
+font-size: 1.5rem;
+}
+#logohead{
+    background-color: rgb(70, 160, 215);
+   /* width:20px;
+   display:flex ;
+   justify-content: center; */
+border-radius: 1em;
+padding: 1rem;
+   font-size: 5em;
+   color: aliceblue;
+}
+
+#portal{
+    color: rgb(70, 160, 215);
+}
+.heading{
+    display: flex;
+ width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.heading>span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.heading>span>h1{
+    font-size: 2rem;
+}
+
+
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+
+#addstudent{
+    background-color:rgb(70, 160, 215) ;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.information{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.informationmain{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgb(92, 135, 89); 
+}
